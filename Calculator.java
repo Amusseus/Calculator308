@@ -9,11 +9,16 @@ public class Calculator extends JFrame {
 
     public Calculator() {
         super("Calculator");
+
+        // Initializes layout to be 5x1
+        // Keeps first Row for displaying text
         GridLayout layout = new GridLayout(5, 1);
         setLayout(layout);
+
         JTextField text = new JTextField("");
         add(text);
 
+        // Creates 4 Rows of 4 buttons
         for(int i = 0 ; i < 4; i++){
             JPanel panel = new JPanel();
             GridLayout panelLayout = new GridLayout(1,4);
