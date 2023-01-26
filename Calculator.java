@@ -14,10 +14,10 @@ public class Calculator extends JFrame {
 
 
     Operation operation;
-
     public static List<String> operators = List.of("+", "-", "*", "/", "=", "C");
+    public static String[][] values = {{"7", "8", "9", "+"},{ "4","5", "6", "-"},{ "1","2","3","*"}, {"C", "0", "=", "/"}};
     private void createButtons(){
-        
+
     }
 
     /**
@@ -45,18 +45,9 @@ public class Calculator extends JFrame {
             JButton[] buttons = new JButton [4];
             // Assign buttons a string with either an operator, a number, or =
             for(int j = 0; j < 4; j++){
-                if (j > 0) {
-                    label = i * j + "";
-                } else {
-                    label = operators.get(i);
-                }
-                if (i == 0) {
-                    if (j == 1) {
-                        label = operators.get(4);
-                    } else if (j == 3) {
-                        label = operators.get(5);
-                    }
-                }
+
+                label = values[i][j];
+
                 buttons[j] = new JButton(label);
                 buttons[j].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
