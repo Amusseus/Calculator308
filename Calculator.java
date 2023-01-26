@@ -6,21 +6,17 @@ import java.util.List;
 
 
 /**
- *
+ * Creates a calculator that can perform basic arithmetic calculations.
  * @author Nicholas Zarate, Giovanni Librizzi, Umair Pathan, Jin Wu, Amogh Prajapati
  */
 public class Calculator extends JFrame {
 
-
-
     Operation operation;
     public static List<String> operators = List.of("+", "-", "*", "/", "=", "C");
     public static String[][] values = {{"7", "8", "9", "+"},{ "4","5", "6", "-"},{ "1","2","3","*"}, {"C", "0", "=", "/"}};
-    private void createButtons(){
-
-    }
 
     /**
+     * Constructor for Calculator class
      *
      */
     public Calculator() {
@@ -65,7 +61,7 @@ public class Calculator extends JFrame {
     }
 
     /**
-     *
+     * Main method creates a Calculator object and sets JFrame
      * @param args
      */
     public static void main(String[] args) {
