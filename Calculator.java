@@ -2,17 +2,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
+
+/**
+ *
+ * @author Nicholas Zarate, Giovanni Librizzi, Umair Pathan, Jin Wu, Amogh Prajapati
+ */
 public class Calculator extends JFrame {
 
 
-    String num1, num2, operator;
 
-    String[] operators = {"+", "-", "*", "/"};
+    Operation operation;
+
+    public static List<String> operators = List.of("+", "-", "*", "/", "=", "C");
     private void createButtons(){
         
     }
 
+    /**
+     *
+     */
     public Calculator() {
         super("Calculator");
 
@@ -21,8 +31,10 @@ public class Calculator extends JFrame {
         GridLayout layout = new GridLayout(5, 1);
         setLayout(layout);
 
-        JTextField text = new JTextField("");
-        add(text);
+        JTextField textDisplay = new JTextField("");
+        add(textDisplay);
+
+        operation = new Operation();
 
         // Creates 4 Rows of 4 buttons
         String label = "";
@@ -36,13 +48,13 @@ public class Calculator extends JFrame {
                 if (j > 0) {
                     label = i * j + "";
                 } else {
-                    label = operators[i];
+                    label = operators.get(i);
                 }
                 if (i == 0) {
                     if (j == 1) {
-                        label = "=";
+                        label = operators.get(4);
                     } else if (j == 3) {
-                        label = "";
+                        label = operators.get(5);
                     }
                 }
                 buttons[j] = new JButton(label);
@@ -50,8 +62,9 @@ public class Calculator extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         JButton b = (JButton)e.getSource();
                         String buttonText = b.getText();
+                        operation.Process(buttonText);
+                        textDisplay.setText(operation.GetCurrentNumStr());
 
-                        System.out.println(buttonText);
                     }
                 });
                 panel.add(buttons[j]);
@@ -60,6 +73,10 @@ public class Calculator extends JFrame {
         }
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
